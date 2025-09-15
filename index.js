@@ -11,6 +11,26 @@ const tutorials = [
   'what is JSONP?'
 ];
 
+const exceptions = ['OO', 'API', 'NaN', 'JSONP'];
 const titleCased = () => {
-  return tutorials
-}
+  return tutorials.map(tutorial => {
+    return tutorial
+    .split(' ')
+    .map(word => {
+      if(exceptions.includes(word.toUpperCase())){
+        return word.toUpperCase();
+      }
+      if (/[A-Z]/.test(word.slice(1))) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      }
+
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      
+  })
+    .join(' ');
+});
+}; 
+
+console.log(titleCased()); 
+
+
